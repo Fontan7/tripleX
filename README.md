@@ -1,2 +1,4 @@
 # tripleX
-c++ console game
+
+
+learning c++ beginner terminal game
