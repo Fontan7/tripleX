@@ -1,12 +1,29 @@
 #include <iostream>
 using std::string;
 
-//global variables
-const int Level = 0;
+void Intro()
+{   
+    //namespace :: property
+    std::cout << "\n\n";
+    std::cout << " &&&&&&&&&&                                                     &&           && \n";
+    std::cout << " &&&&&&&&&&  |&&&&&&&     |&  |&&&&&&&    |&        |&&&&&&&       &       &    \n";     
+    std::cout << "     &|      |&      &        |&      &   |&        |&               &   &      \n";   
+    std::cout << "     &|      |&&&&&&&     |&  |&&&&&&&    |&        |&&&&&&            @        \n";
+    std::cout << "     &|      |& &         |&  |&          |&        |&               &   &      \n";
+    std::cout << "     &|      |&   &       |&  |&          |&        |&             &       &    \n";
+    std::cout << "     &|      |&     &     |&  |&          |&&&&&&&  |&&&&&&&    &&           && \n";
+
+    std::cout << "\n\n          --ATTENTION-- YOU ARE ENTERING A RESTRICTED ZONE\n";
+}
 
 
-bool PlayGame(const int)
+bool PlayGame(int Level)
 {
+    if (Level == 0)
+    {
+        Intro();
+    }
+    
     const int CodeA = 1;
     const int CodeB = 2;
     const int CodeC = 3;
@@ -15,9 +32,7 @@ bool PlayGame(const int)
     int UserCodeA;
     int UserCodeB;
     int UserCodeC;
- 
-    //namespace :: property
-    std::cout << "\n\n+ Attention you are entering a restricted zone \n" ; 
+
     std::cout << "\n+ Enter the correct code in order to continue \n" ; 
 
     std::cout << "+ There are 3 numbers declared as const" << std::endl;
@@ -43,13 +58,19 @@ bool PlayGame(const int)
 
 int main()
 {
+    int Level = 0;
     while(true)
     {
-        
         bool LevelCleared = PlayGame(Level);
         
         std::cin.clear(); //clears any errors
         std::cin.ignore(); //discards the buffer
+
+        if (LevelCleared)
+        {
+            ++Level;
+        }
+        
     }
     
     return 0;
