@@ -1,67 +1,35 @@
 #include <iostream>
-using std::string;
-
-void Intro()
-{   
-    //namespace :: property
-    std::cout << "\n\n";
-    std::cout << " &&&&&&&&&&                                                     &&           && \n";
-    std::cout << " &&&&&&&&&&  |&&&&&&&     |&  |&&&&&&&    |&        |&&&&&&&       &       &    \n";     
-    std::cout << "     &|      |&      &        |&      &   |&        |&               &   &      \n";   
-    std::cout << "     &|      |&&&&&&&     |&  |&&&&&&&    |&        |&&&&&&            @        \n";
-    std::cout << "     &|      |& &         |&  |&          |&        |&               &   &      \n";
-    std::cout << "     &|      |&   &       |&  |&          |&        |&             &       &    \n";
-    std::cout << "     &|      |&     &     |&  |&          |&&&&&&&  |&&&&&&&    &&           && \n";
-
-    std::cout << "\n\n          --ATTENTION-- YOU ARE ENTERING A RESTRICTED ZONE\n";
-}
+#include "../includes/globals.h"
+#include "../includes/strCheckers.h"
+#include "../includes/stories.h"
 
 
-bool PlayGame(int Level)
+int PlayGame(int Level)
 {
-    if (Level == 0)
+    switch (Level)
     {
-        Intro();
+    case 0:
+        return LevelCleared = Intro();
+        break;
+    case 1:
+        return LevelCleared = Lvl1();
+        break;
+
+    default:
+        return 0;
+        break;
     }
-    
-    const int CodeA = 1;
-    const int CodeB = 2;
-    const int CodeC = 3;
-    int CodeSum = CodeA + CodeB + CodeC;
-
-    int UserCodeA;
-    int UserCodeB;
-    int UserCodeC;
-
-    std::cout << "\n+ Enter the correct code in order to continue \n" ; 
-
-    std::cout << "+ There are 3 numbers declared as const" << std::endl;
-    std::cout << "+ They add up to: " << CodeSum << std::endl;
-
-    std::cout << "+ Enter any number separated by space and press enter" << std::endl;
-    
-    std::cin >> UserCodeA >> UserCodeB >> UserCodeC;
-    int UserSum = UserCodeA + UserCodeB + UserCodeC;
-
-    if(CodeSum == UserSum)
-    {
-        std::cout << "+ Congrats! you are a genius and skipped te last part of the game";
-        return 1;
-    }
-
-    std::cout << "+ You entered: " << UserCodeA << UserCodeB << UserCodeC << std::endl;
-    std::cout << "+ The sum of it is: " << UserSum << std::endl;
-
-    return 1;
 }
-
+    
+    
 
 int main()
 {
     int Level = 0;
     while(true)
     {
-        bool LevelCleared = PlayGame(Level);
+        int error = PlayGame(Level);
+        // errorCheck(error);
         
         std::cin.clear(); //clears any errors
         std::cin.ignore(); //discards the buffer
