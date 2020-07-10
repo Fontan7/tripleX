@@ -1,8 +1,9 @@
 #include <iostream>
+#include <string>
 #include "../includes/globals.h"
-#include "../includes/strCheckers.h"
+#include "../includes/checkers.h"
+#include "../includes/printers.h"
 #include "../includes/stories.h"
-
 
 int PlayGame(int Level)
 {
@@ -14,21 +15,20 @@ int PlayGame(int Level)
     case 1:
         return LevelCleared = Lvl1();
         break;
-
+    case 2:
+        return LevelCleared = Lvl2();
+        break;
     default:
         return 0;
         break;
     }
 }
-    
-    
 
 int main()
 {
-    int Level = 0;
     while(true)
     {
-        int error = PlayGame(Level);
+        int LevelCleared = PlayGame(Level);
         // errorCheck(error);
         
         std::cin.clear(); //clears any errors
@@ -38,18 +38,26 @@ int main()
         {
             ++Level;
         }
+        else
+        {
+            Print("\n\n                      ");
+            SlowPrint("Y O U  L O O S E\n", 300);
+            SlowPrint("                        play again? Y/N; ", 50);
+            std::cin >> UserResponseStr;
+            Continue = StringRespCheck(toLower(UserResponseStr), "y");
+            if(!Continue)
+            {
+                break;
+            }
+            else
+            {
+                Level = 0;
+            }
+            
+        }
+        
         
     }
     
     return 0;
 }
-
-
-/*
-int stringPrinter (string phrase) 
-{
-    int strLength = phrase.length();
-
-    return 0;
-}
-*/
