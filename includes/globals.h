@@ -1,6 +1,6 @@
 using std::string;
 
-int Level = 1;
+int Level = 0;
 string UserResponseStr;
 string CorrectValueStr;
 
@@ -13,10 +13,6 @@ int UserCodeA = 2;
 int UserCodeB;
 int UserCodeC;
 const int UserSum3 = UserCodeA + UserCodeB + UserCodeC;
-
-const int CodeA = 4;
-const int CodeB = 5;
-const int CodeC = 1;
-const int CodeSumFarenheit = CodeA + CodeB + CodeC;
+const string CodeSumFarenheit = "451";
 
 //Level 2

@@ -29,7 +29,6 @@ int main()
     while(true)
     {
         int LevelCleared = PlayGame(Level);
-        // errorCheck(error);
         
         std::cin.clear(); //clears any errors
         std::cin.ignore(); //discards the buffer
@@ -41,8 +40,8 @@ int main()
         else
         {
             Print("\n\n                      ");
-            SlowPrint("Y O U  L O O S E\n", 300);
-            SlowPrint("                        play again? Y/N; ", 50);
+            SlowPrint("Y O U  L O S E\n", 300);
+            SlowPrint("                        play again? ", 50);
             std::cin >> UserResponseStr;
             Continue = StringRespCheck(toLower(UserResponseStr), "y");
             if(!Continue)
@@ -51,6 +50,7 @@ int main()
             }
             else
             {
+                ClearScreen();
                 Level = 0;
             }
             

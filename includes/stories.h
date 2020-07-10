@@ -40,6 +40,7 @@ bool Intro()
 
 bool Lvl1()
 {
+    ClearScreen();
     SlowPrint("\n+ You walk inside the dark room ", 70);
     SlowPrint(". . .\n", 100);
     SlowPrint("\n\n\n\n\n\n\n", 200);
@@ -61,7 +62,10 @@ bool Lvl1()
     Continue = StringRespCheck(toLower(UserResponseStr), "n");
     if(!Continue)
     {
-
+        ChangeColor(12);
+        SlowPrint("\n--You saw for an instant the flame before your eyes, unfortunately the whole room exploded and you died", 50);
+        ChangeColor(7);
+        Sleep(1000);
         return 0;
     }
 
@@ -78,11 +82,12 @@ bool Lvl1()
     Print(" |_6_5_4_|\n");
     Print(" |_3_2_1_|\n");
     Print(" |___0___|\n\n");
-    SlowPrint("+ It is a digital door lock.\n\n", 70);
-
+    SlowPrint("+ It is a digital door lock.\n", 70);
     SlowPrint("+ It looks pretty old and jagged.\n", 70);  
     SlowPrint("+ Next to the pannel are some numbers and letters carved into the wall.\n", 70);
     SlowPrint("+ It's hard to read...\n", 70);
+    ClearScreen();
+
     SlowPrint("+ It says...  \"If you hide your ignorance, no one will hit you and you'll never learn...\" \n", 70);
     SlowPrint("+ Right bellow that, the numbers 8 10 2 \n\n", 70);
 
@@ -105,34 +110,18 @@ bool Lvl1()
             break;
         }
         
-        SlowPrint("--Hint: the pannel only takes 3 single digit numbers separated by space or enter\n", 40);
+        ClearScreen();
+        SlowPrint("--Hint: the pannel only takes 3 single digit numbers separated by space or enter\n\n", 40);
+        SlowPrint("+ It says...  \"If you hide your ignorance, no one will hit you and you'll never learn...\" \n", 40);
+        SlowPrint("+ Right bellow that, the numbers 8 10 2 \n\n", 40);
     }
-    Sleep(5000);
-
-
+        
     return 1;
 }
 
 bool Lvl2()
 {
-    
-    std::cout << "\n+ Enter the correct code in order to continue \n" ; 
-    std::cout << "+ There are 3 numbers declared as const" << std::endl;
-    std::cout << "+ They add up to: " << CodeSumFarenheit << std::endl;
-
-    std::cout << "+ Enter any number separated by space and press enter" << std::endl;
-
-    std::cin >> UserCodeA >> UserCodeB >> UserCodeC;
-    int UserSum3 = UserCodeA + UserCodeB + UserCodeC;
-
-    if(CodeSumFarenheit == UserSum3)
-    {
-        std::cout << "+ Congrats! you are a genius and skipped te last part of the game";
-        return 1;
-    }
-
-    std::cout << "+ You entered: " << UserCodeA << UserCodeB << UserCodeC << std::endl;
-    std::cout << "+ The sum of it is: " << UserSum3 << std::endl;
+    Print("this is level 2 congrats, no more levels have been developed so far");
     
     return 1;
 }
