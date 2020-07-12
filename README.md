@@ -1,2 +1,2 @@
 # tripleX
-c++ console game
+C++ console game
