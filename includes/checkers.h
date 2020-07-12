@@ -18,10 +18,10 @@ bool PannelCheck(int A, int B, int C, string CorrectValue)
     string rC = to_string(C);
     string Response = rA + rB + rC;
 
-    if (Response == CodeSumFarenheit)
+    if (Response == CodeSumFarenheit && Level == 1)
     {
-        std::cout << "--You are already wise, therefore you will be presented with the last challenge";
-        //Level = 2;
+        std::cout << "--You are already wise, therefore you will be presented with the ultimate challenge\n\n";
+        //Level = MaxLevel;
         return true;
     }
     else if (Response == CorrectValue)

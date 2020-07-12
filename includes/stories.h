@@ -121,7 +121,7 @@ bool Lvl1()
 
 bool Lvl2()
 {
-    Print("this is level 2 congrats, no more levels have been developed so far");
+    Print("\n\nthis is level 2 congrats, no more levels have been developed so far");
     
     return 1;
 }
