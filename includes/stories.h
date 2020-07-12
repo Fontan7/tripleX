@@ -32,13 +32,13 @@ bool Intro()
     Continue = StringRespCheck(toLower(UserResponseStr), "y");
     if(!Continue)
     {
-        return false;
+        return 0;
     }
 
-    return true;
+    return 1;
 }
 
-bool Lvl1()
+bool Lvl2()
 {
     ClearScreen();
     SlowPrint("\n+ You walk inside the dark room ", 70);
@@ -58,6 +58,7 @@ bool Lvl1()
     Sleep(1000);
 
     Print("\n          --Use?  Y/N; ");
+
     std::cin >> UserResponseStr;
     Continue = StringRespCheck(toLower(UserResponseStr), "n");
     if(!Continue)
@@ -74,15 +75,8 @@ bool Lvl1()
     SlowPrint("+ You slowly walk towards it.", 80);
     SlowPrint("\n\n\n\n\n\n", 200);
 
-    Print(" ________\n");
-    ChangeColor(11);
-    Print(" | 0-0-0 |\n");
-    ChangeColor(7);
-    Print(" |_9_8_7_|\n");
-    Print(" |_6_5_4_|\n");
-    Print(" |_3_2_1_|\n");
-    Print(" |___0___|\n\n");
-    SlowPrint("+ It is a digital door lock.\n", 70);
+    EmptyPannel();
+    SlowPrint("\n\n+ It is a digital door lock.\n", 70);
     SlowPrint("+ It looks pretty old and jagged.\n", 70);  
     SlowPrint("+ Next to the pannel are some numbers and letters carved into the wall.\n", 70);
     SlowPrint("+ It's hard to read...\n", 70);
@@ -103,8 +97,8 @@ bool Lvl1()
         Print(" |___0___|\n\n");
         Print("--Code: ");
       
-        std::cin >> UserCodeA >> UserCodeB >> UserCodeC;
-        Continue = PannelCheck(UserCodeA, UserCodeB, UserCodeC, "812");
+        std::cin >> UCodeA >> UCodeB >> UCodeC;
+        Continue = PannelCheck(UCodeA, UCodeB, UCodeC, "812");
         if (Continue)
         {
             break;
@@ -119,9 +113,30 @@ bool Lvl1()
     return 1;
 }
 
-bool Lvl2()
+bool Lvl3()
 {
-    Print("\n\nthis is level 2 congrats, no more levels have been developed so far");
+    SlowPrint("--There are 3 numbers in the code\n", 40);
+    SlowPrint("--The numbers sum is equal to; " + SSum + "\n", 40);
+    SlowPrint("--The numbers multiplied are equal to; " + SMultip + "\n", 40);
+    EmptyPannel();
     
+    while (true)
+    {
+        std::cin >> UCodeA >> UCodeB >> UCodeC;
+        Continue = PannelCheck(UCodeA, UCodeB, UCodeC, "812");
+        if (Continue)
+        {
+            UsedPannel(true, to_string(UCodeA), to_string(UCodeB), to_string(UCodeC));
+            SlowPrint("+ Eureka!", 40);
+            Sleep(500);
+
+            break;
+        }
+
+        ClearScreen();
+        SlowPrint("--Hint: the pannel only takes 3 single digit numbers separated by space or enter\n\n", 40);
+    }
+
+
     return 1;
 }

@@ -5,10 +5,14 @@ bool StringRespCheck(string ResponseStr, string CorrectValue)
 {
     if(ResponseStr.compare(CorrectValue) == 0)
     {
-        return true;
+        std::cin.clear();
+        std::cin.ignore();
+        return 1;
     }
 
-    return false;
+    std::cin.clear();
+    std::cin.ignore();
+    return 0;
 }
 
 bool PannelCheck(int A, int B, int C, string CorrectValue)
@@ -22,13 +26,21 @@ bool PannelCheck(int A, int B, int C, string CorrectValue)
     {
         std::cout << "--You are already wise, therefore you will be presented with the ultimate challenge\n\n";
         //Level = MaxLevel;
-        return true;
+
+        std::cin.clear();
+        std::cin.ignore();
+        return 0;
     }
     else if (Response == CorrectValue)
     {
-        return true;
+
+        std::cin.clear(); 
+        std::cin.ignore();
+        return 1;
     }
 
-    return false;
+    std::cin.clear(); 
+    std::cin.ignore();
+    return 0;
 }
 

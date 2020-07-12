@@ -9,14 +9,14 @@ int PlayGame(int Level) //Rcieves the level to play and loads it
 {
     switch (Level)
     {
-    case 0:
-        return LevelCleared = Intro();
-        break;
     case 1:
-        return LevelCleared = Lvl1();
+        return LevelCleared = Intro();
         break;
     case 2:
         return LevelCleared = Lvl2();
+        break;
+    case 3:
+        return LevelCleared = Lvl3();
         break;
     default:
         return 0;
@@ -26,6 +26,7 @@ int PlayGame(int Level) //Rcieves the level to play and loads it
 
 int main()
 {
+    srand(time(NULL)); //Creates a new random sequence based on time used in rand() in globals.h
     while(Level <= MaxLevel) //Continues to execute play game until there are no more levels
     {
         int LevelCleared = PlayGame(Level);
@@ -33,7 +34,7 @@ int main()
         std::cin.clear(); //clears any errors
         std::cin.ignore(); //discards the buffer
 
-        if (LevelCleared && Level < MaxLevel) //If the level is cleared and there are more levels...
+        if (LevelCleared && Level < MaxLevel) //If the level is cleared and there are more levels to play...
         {
             SlowPrint("\n--Well done.", 90);
             Sleep(1000);

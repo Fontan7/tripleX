@@ -42,3 +42,47 @@ void ClearScreen(char fill = ' ') {
     FillConsoleOutputAttribute(console, s.wAttributes, cells, tl, &written);
     SetConsoleCursorPosition(console, tl);
 }
+
+void UsedPannel(bool Correct, string A, string B, string C)
+{
+    if(!Correct)
+    {
+        Print("\n ________\n");
+        ChangeColor(12);
+        Print(" | "+ A +"-"+ B +"-"+ C +" |\n");
+        ChangeColor(7);
+        Print(" |_9_8_7_|\n");
+        Print(" |_6_5_4_|\n");
+        Print(" |_3_2_1_|\n");
+        Print(" |___0___|\n\n");
+        Print("--Code: ");
+    }
+    else
+    {
+        Correct = false;
+
+        Print("\n ________\n");
+        ChangeColor(11);
+        Print(" | " + A + "-" + B + "-" + C + " |\n");
+        ChangeColor(7);
+        Print(" |_9_8_7_|\n");
+        Print(" |_6_5_4_|\n");
+        Print(" |_3_2_1_|\n");
+        Print(" |___0___|\n\n");
+        Print("--Code: ");
+    }
+    
+}
+
+void EmptyPannel()
+{
+    Print("\n ________\n");
+    ChangeColor(11);
+    Print(" | 0-0-0 |\n");
+    ChangeColor(7);
+    Print(" |_9_8_7_|\n");
+    Print(" |_6_5_4_|\n");
+    Print(" |_3_2_1_|\n");
+    Print(" |___0___|\n\n");
+    Print("--Code: ");
+}
