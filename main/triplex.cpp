@@ -1,40 +1,18 @@
 #include <iostream>
 #include <string>
+#include <ctime>
 #include "../includes/globals.h"
 #include "../includes/printers.h"
 #include "../includes/checkers.h"
 #include "../includes/stories.h"
 
-bool PlayGame(int Level) //Rcieves the level to play and loads it
-{
-    switch (Level)
-    {
-    case 1:
-        return LevelCleared = Intro();
-        break;
-    case 2:
-        return LevelCleared = Lvl2();
-        break;
-    case 3:
-        return LevelCleared = Lvl3();
-        break;
-    case 4:
-        return LevelCleared = Lvl4();
-        break;
-    case 5:
-        return LevelCleared = Lvl5();
-        break;
-    default:
-        return 0;
-        break;
-    }
-}
 
 int main()
 {
     while(Level <= MaxLevel) //Continues to execute play game until there are no more levels
     {
-        bool LevelComplete = PlayGame(Level);
+        UpdateVariables();
+        bool LevelComplete = PlayGameCycle(Level);
 
         if (LevelComplete && Level < MaxLevel) //If the level is cleared and there are more levels to play...
         {

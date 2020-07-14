@@ -104,8 +104,10 @@ bool Lvl3()
     std::cout << rand() % Level + Level << "\n";
     //ClearScreen();
     Print("You entered level ");
+
     std::cout << Level << "\n";
-    std::cout << CodeA << CodeB << CodeC;
+    std::cout << CodeA << CodeB << CodeC << "\n";
+
     SlowPrint("--There are 3 numbers in the code\n", 40);
     SlowPrint("--The numbers sum is equal to; " + SSum + "\n", 40);
     SlowPrint("--The numbers multiplied are equal to; " + SMultip + "\n", 40);
@@ -134,8 +136,10 @@ bool Lvl4()
 {
     ClearScreen();
     Print("You entered level ");
+
     std::cout << Level << "\n";
-    std::cout << CodeA << CodeB << CodeC;
+    std::cout << CodeA << CodeB << CodeC << "\n";
+
     SlowPrint("--There are 3 numbers in the code\n", 40);
     SlowPrint("--The numbers sum is equal to; " + SSum + "\n", 40);
     SlowPrint("--The numbers multiplied are equal to; " + SMultip + "\n", 40);
@@ -162,34 +166,24 @@ bool Lvl4()
     return 1;
 }
 
-bool Lvl5()
+bool PlayGameCycle(int Level) //Rcieves the level to play and loads it
 {
-    ClearScreen();
-    Print("You entered level ");
-    std::cout << Level << "\n";
-    std::cout << CodeA << CodeB << CodeC;
-    SlowPrint("--There are 3 numbers in the code\n", 40);
-    SlowPrint("--The numbers sum is equal to; " + SSum + "\n", 40);
-    SlowPrint("--The numbers multiplied are equal to; " + SMultip + "\n", 40);
-    EmptyPannel();
-
-    while (true)
+    switch (Level)
     {
-        std::cin >> UCodeA >> UCodeB >> UCodeC;
-        if (PannelCheck(UCodeA, UCodeB, UCodeC, ""))
-        {
-            break;
-        }
-
-
-        SlowPrint("--Hint: the pannel only takes 3 single digit numbers separated by space or enter\n\n", 40);
-        Print("--There are 3 numbers in the code\n");
-        Print("--The numbers sum is equal to; " + SSum + "\n");
-        Print("--The numbers multiplied are equal to; " + SMultip + "\n");
-        Print("--Code: ");
-
-
+    case 1:
+        return LevelCleared = Intro();
+        break;
+    case 2:
+        return LevelCleared = Lvl2();
+        break;
+    case 3:
+        return LevelCleared = Lvl3();
+        break;
+    case 4:
+        return LevelCleared = Lvl4();
+        break;
+    default:
+        return 0;
+        break;
     }
-
-    return 1;
 }

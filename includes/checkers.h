@@ -64,3 +64,15 @@ bool PannelCheck(int A, int B, int C, string CorrectValue)
     return 0;
 }
 
+void UpdateVariables()
+{
+    srand(time(NULL));
+    CodeA = (rand() % Level) + Level;
+    CodeB = (rand() % Level) + Level;
+    CodeC = (rand() % Level) + Level;
+    Sum = CodeA + CodeB + CodeC;
+    Multip = CodeA * CodeB * CodeC;
+    SSum = to_string(Sum);
+    SMultip = to_string(Multip);
+}
+
