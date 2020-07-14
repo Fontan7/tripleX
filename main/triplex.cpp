@@ -34,9 +34,9 @@ int main()
             Print("\n\n                      ");
             SlowPrint("Y O U  L O S E\n", 300);
             SlowPrint("                        play again? ", 50);
+
             std::cin >> UserResponseStr;
-            Continue = RespCheck(toLower(UserResponseStr), "y");
-            if(!Continue)
+            if(!RespCheck(toLower(UserResponseStr), "y"))
             {
                 break; //Exits the loop and ends the game
             }
