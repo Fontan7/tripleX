@@ -31,9 +31,9 @@ bool Lvl2()
 {
     ClearScreen();
     Print("You entered level ");
+    std::cout << Level << "\n";
 
-    ClearScreen();
-    SlowPrint("\n+ You walk inside the dark room ", 70);
+    SlowPrint("\n+ You walk inside the dark room ", 50);
     SlowPrint(". . .\n", 100);
     SlowPrint("\n\n\n\n\n\n\n", 200);
     ChangeColor(12);
@@ -41,41 +41,38 @@ bool Lvl2()
     ChangeColor(7);
     Sleep(2000);
 
-    SlowPrint("+ It is very cold in here.\n", 80);
-    SlowPrint("+ Completly silent, you can't even hear the world outside.\n\n", 70);
-    Sleep(3000);
-    SlowPrint("+ It smells like spoiled eggs.\n", 70);
+    SlowPrint("+ It is very cold in here.\n", 50);
+    SlowPrint("+ Completly silent, you can't even hear the world outside.\n\n", 60);
+    Sleep(2000);
+    SlowPrint("+ It smells like spoiled eggs.\n", 50);
     Sleep(500);
-    SlowPrint("+ You almost can't see anything and think of using your lighter.\n", 70);
+    SlowPrint("+ You almost can't see anything and think of using your lighter.\n", 50);
     Sleep(1000);
 
     Print("\n          --Use?  Y/N; ");
 
     std::cin >> UserResponseStr;
-    Continue = RespCheck(toLower(UserResponseStr), "n");
-    if(!Continue)
+    if(!RespCheck(toLower(UserResponseStr), "n"))
     {
         ChangeColor(12);
-        SlowPrint("\n--You saw for an instant the flame before your eyes, unfortunately the whole room exploded and you died", 50);
+        SlowPrint("\n--You saw for an instant the flame before your eyes, unfortunately the whole room exploded and you died", 40);
         ChangeColor(7);
         Sleep(1000);
         return 0;
     }
 
-    SlowPrint("+ A few meters away you spot a light in the darkness.\n", 80);
+    SlowPrint("+ A few meters away you spot a light in the darkness.\n", 50);
     Sleep(1000);
-    SlowPrint("+ You slowly walk towards it.", 80);
+    SlowPrint("+ You slowly walk towards it.\n", 80);
     SlowPrint("\n\n\n\n\n\n", 200);
-
-    EmptyPannel();
-    SlowPrint("\n\n+ It is a digital door lock.\n", 70);
-    SlowPrint("+ It looks pretty old and jagged.\n", 70);  
-    SlowPrint("+ Next to the pannel are some numbers and letters carved into the wall.\n", 70);
-    SlowPrint("+ It's hard to read...\n", 70);
-    ClearScreen();
-
+    
+    SlowPrint("\n\n+ It is a digital door lock.\n", 50);
+    SlowPrint("+ It looks pretty old and jagged.\n", 50);  
+    SlowPrint("+ Next to the pannel are some numbers and letters carved into the wall.\n", 50);
+    SlowPrint("+ It's hard to read...\n", 50);
     SlowPrint("+ It says...  \"If you hide your ignorance, no one will hit you and you'll never learn...\" \n", 70);
     SlowPrint("+ Right bellow that, the numbers 8 10 2 \n\n", 70);
+    EmptyPannel();
 
     while (true)
     {
@@ -85,11 +82,11 @@ bool Lvl2()
             break;
         }
         
-        ClearScreen();
         SlowPrint("--Hint: the pannel only takes 3 single digit numbers separated by space or enter\n\n", 40);
         SlowPrint("+ It says...  \"If you hide your ignorance, no one will hit you and you'll never learn...\" \n", 40);
         SlowPrint("+ Right bellow that, the numbers 8 10 2 \n\n", 40);
-        UsedPannel(false, to_string(UCodeA), to_string(UCodeB), to_string(UCodeC));
+        Print("--Code: ");
+        
     }
         
     return 1;
@@ -97,14 +94,8 @@ bool Lvl2()
 
 bool Lvl3()
 {
-    std::cout << rand() % Level + Level << "\n";
-    std::cout << rand() % Level + Level << "\n";
-    std::cout << rand() % Level + Level << "\n";
-    std::cout << rand() % Level + Level << "\n";
-    std::cout << rand() % Level + Level << "\n";
-    //ClearScreen();
+    ClearScreen();
     Print("You entered level ");
-
     std::cout << Level << "\n";
     std::cout << CodeA << CodeB << CodeC << "\n";
 
@@ -166,7 +157,41 @@ bool Lvl4()
     return 1;
 }
 
-bool PlayGameCycle(int Level) //Rcieves the level to play and loads it
+bool Lvl5()
+{
+    ClearScreen();
+    Print("You entered level ");
+    std::cout << Level << "\n";
+
+    std::cout << CodeA << CodeB << CodeC << "\n";
+
+    SlowPrint("--There are 3 numbers in the code\n", 40);
+    SlowPrint("--The numbers sum is equal to; " + SSum + "\n", 40);
+    SlowPrint("--The numbers multiplied are equal to; " + SMultip + "\n", 40);
+    EmptyPannel();
+
+    while (true)
+    {
+        std::cin >> UCodeA >> UCodeB >> UCodeC;
+        if (PannelCheck(UCodeA, UCodeB, UCodeC, ""))
+        {
+            break;
+        }
+
+
+        SlowPrint("--Hint: the pannel only takes 3 single digit numbers separated by space or enter\n\n", 40);
+        Print("--There are 3 numbers in the code\n");
+        Print("--The numbers sum is equal to; " + SSum + "\n");
+        Print("--The numbers multiplied are equal to; " + SMultip + "\n");
+        Print("--Code: ");
+
+
+    }
+
+    return 1;
+}
+
+bool PlayGame(int Level) //Rcieves the level to play and loads it
 {
     switch (Level)
     {
@@ -181,6 +206,9 @@ bool PlayGameCycle(int Level) //Rcieves the level to play and loads it
         break;
     case 4:
         return LevelCleared = Lvl4();
+        break;
+    case 5:
+        return LevelCleared = Lvl5();
         break;
     default:
         return 0;

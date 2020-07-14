@@ -6,13 +6,12 @@
 #include "../includes/checkers.h"
 #include "../includes/stories.h"
 
-
 int main()
 {
     while(Level <= MaxLevel) //Continues to execute play game until there are no more levels
     {
         UpdateVariables();
-        bool LevelComplete = PlayGameCycle(Level);
+        bool LevelComplete = PlayGame(Level);
 
         if (LevelComplete && Level < MaxLevel) //If the level is cleared and there are more levels to play...
         {

@@ -2,7 +2,7 @@
 using namespace std;
 using std::string;
 
-int Level = 3;
+int Level = 1;
 const int MaxLevel = 5;
 string UserResponseStr;
 string CorrectValueStr;

@@ -23,14 +23,14 @@ bool PannelCheck(int A, int B, int C, string CorrectValue)
     string rC = to_string(C);
     string Response = rA + rB + rC;
 
-    if (Response == CodeSumFarenheit && Level == 1)
+    if (Response == CodeSumFarenheit && Level == 2)
     {
         SlowPrint("--You are already wise, therefore you will be presented with the ultimate challenge\n\n", 40);
-        Level = MaxLevel;
+        Level = MaxLevel - 1;
 
         std::cin.clear();
         std::cin.ignore();
-        return 0;
+        return 1;
     }
     else if (A + B + C == Sum && A * B * C == Multip && CorrectValue == "")
     {
