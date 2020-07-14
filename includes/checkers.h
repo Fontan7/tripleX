@@ -1,17 +1,18 @@
 using namespace std;
 using std::string; 
 
-bool StringRespCheck(string ResponseStr, string CorrectValue)
+bool RespCheck(string ResponseStr, string CorrectValue)
 {
     if(ResponseStr.compare(CorrectValue) == 0)
     {
         std::cin.clear();
         std::cin.ignore();
+
         return 1;
     }
-
     std::cin.clear();
     std::cin.ignore();
+   
     return 0;
 }
 
@@ -24,23 +25,42 @@ bool PannelCheck(int A, int B, int C, string CorrectValue)
 
     if (Response == CodeSumFarenheit && Level == 1)
     {
-        std::cout << "--You are already wise, therefore you will be presented with the ultimate challenge\n\n";
-        //Level = MaxLevel;
+        SlowPrint("--You are already wise, therefore you will be presented with the ultimate challenge\n\n", 40);
+        Level = MaxLevel;
 
         std::cin.clear();
         std::cin.ignore();
         return 0;
+    }
+    else if (A + B + C == Sum && A * B * C == Multip && CorrectValue == "")
+    {
+        std::cin.clear();
+        std::cin.ignore();
+        ClearScreen();
+        UsedPannel(true, to_string(UCodeA), to_string(UCodeB), to_string(UCodeC));
+        SlowPrint("+ Eureka!", 40);
+        Sleep(500);
+
+        return 1;
     }
     else if (Response == CorrectValue)
     {
 
         std::cin.clear(); 
         std::cin.ignore();
+        ClearScreen();
+        UsedPannel(true, to_string(UCodeA), to_string(UCodeB), to_string(UCodeC));
+        SlowPrint("+ Eureka!", 40);
+        Sleep(500);
+
         return 1;
     }
 
     std::cin.clear(); 
     std::cin.ignore();
+    ClearScreen();
+    UsedPannel(false, to_string(UCodeA), to_string(UCodeB), to_string(UCodeC));
+
     return 0;
 }
 

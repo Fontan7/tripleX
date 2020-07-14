@@ -1,11 +1,11 @@
 #include <iostream>
 #include <string>
 #include "../includes/globals.h"
-#include "../includes/checkers.h"
 #include "../includes/printers.h"
+#include "../includes/checkers.h"
 #include "../includes/stories.h"
 
-int PlayGame(int Level) //Rcieves the level to play and loads it
+bool PlayGame(int Level) //Rcieves the level to play and loads it
 {
     switch (Level)
     {
@@ -18,6 +18,12 @@ int PlayGame(int Level) //Rcieves the level to play and loads it
     case 3:
         return LevelCleared = Lvl3();
         break;
+    case 4:
+        return LevelCleared = Lvl4();
+        break;
+    case 5:
+        return LevelCleared = Lvl5();
+        break;
     default:
         return 0;
         break;
@@ -26,23 +32,20 @@ int PlayGame(int Level) //Rcieves the level to play and loads it
 
 int main()
 {
-    srand(time(NULL)); //Creates a new random sequence based on time used in rand() in globals.h
     while(Level <= MaxLevel) //Continues to execute play game until there are no more levels
     {
-        int LevelCleared = PlayGame(Level);
-        
-        std::cin.clear(); //clears any errors
-        std::cin.ignore(); //discards the buffer
+        bool LevelComplete = PlayGame(Level);
 
-        if (LevelCleared && Level < MaxLevel) //If the level is cleared and there are more levels to play...
+        if (LevelComplete && Level < MaxLevel) //If the level is cleared and there are more levels to play...
         {
             SlowPrint("\n--Well done.", 90);
-            Sleep(1000);
+            Sleep(1500);
             ++Level;
         }
-        else if (LevelCleared == MaxLevel) //If the level is cleared and there are not more levels...
+        else if (Level >= MaxLevel) //If the level is cleared and there are not more levels...
         {
-            SlowPrint("--The greater the obstacle, the more glory in overcoming it.", 90);
+            ClearScreen();
+            SlowPrint("  --The greater the obstacle, the more glory in overcoming it.", 80);
             Print("\n\n                      ");
             SlowPrint("Y O U  W I N !", 300);
             Sleep(5000);
@@ -55,7 +58,7 @@ int main()
             SlowPrint("Y O U  L O S E\n", 300);
             SlowPrint("                        play again? ", 50);
             std::cin >> UserResponseStr;
-            Continue = StringRespCheck(toLower(UserResponseStr), "y");
+            Continue = RespCheck(toLower(UserResponseStr), "y");
             if(!Continue)
             {
                 break; //Exits the loop and ends the game

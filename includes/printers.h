@@ -55,7 +55,6 @@ void UsedPannel(bool Correct, string A, string B, string C)
         Print(" |_6_5_4_|\n");
         Print(" |_3_2_1_|\n");
         Print(" |___0___|\n\n");
-        Print("--Code: ");
     }
     else
     {
@@ -68,8 +67,7 @@ void UsedPannel(bool Correct, string A, string B, string C)
         Print(" |_9_8_7_|\n");
         Print(" |_6_5_4_|\n");
         Print(" |_3_2_1_|\n");
-        Print(" |___0___|\n\n");
-        Print("--Code: ");
+        Print(" |___0___|\n\n");      
     }
     
 }
@@ -83,6 +81,30 @@ void EmptyPannel()
     Print(" |_9_8_7_|\n");
     Print(" |_6_5_4_|\n");
     Print(" |_3_2_1_|\n");
-    Print(" |___0___|\n\n");
+    Print(" |___0___|\n\n");   
     Print("--Code: ");
+}
+
+void Tutorial()
+{
+
+
+    ClearScreen();
+}
+
+void AcsiiArt()
+{
+    //namespace :: property
+    ChangeColor(12);
+    std::cout << "\n\n";
+    std::cout << "   &&&&&&&&&&                                                     &&           && \n";
+    std::cout << "   &&&&&&&&&&  |&&&&&&&     |&  |&&&&&&&    |&        |&&&&&&&       &       &    \n";
+    std::cout << "       &|      |&      &        |&      &   |&        |&               &   &      \n";
+    std::cout << "       &|      |&&&&&&&     |&  |&&&&&&&    |&        |&&&&&&            @        \n";
+    std::cout << "       &|      |& &         |&  |&          |&        |&               &   &      \n";
+    std::cout << "       &|      |&   &       |&  |&          |&        |&             &       &    \n";
+    std::cout << "       &|      |&     &     |&  |&          |&&&&&&&  |&&&&&&&    &&           && \n";
+    ChangeColor(7);
+    Print("                             ");
+    SlowPrint("Game by Nahuel Fontan\n", 40);
 }

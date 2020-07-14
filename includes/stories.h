@@ -2,24 +2,14 @@ using std::string;
 
 bool Intro()
 {   
-    //namespace :: property
-    ChangeColor(12);
-    std::cout << "\n\n";
-    std::cout << "   &&&&&&&&&&                                                     &&           && \n";
-    std::cout << "   &&&&&&&&&&  |&&&&&&&     |&  |&&&&&&&    |&        |&&&&&&&       &       &    \n";     
-    std::cout << "       &|      |&      &        |&      &   |&        |&               &   &      \n";   
-    std::cout << "       &|      |&&&&&&&     |&  |&&&&&&&    |&        |&&&&&&            @        \n";
-    std::cout << "       &|      |& &         |&  |&          |&        |&               &   &      \n";
-    std::cout << "       &|      |&   &       |&  |&          |&        |&             &       &    \n";
-    std::cout << "       &|      |&     &     |&  |&          |&&&&&&&  |&&&&&&&    &&           && \n";
+    AcsiiArt();
+    Print("\n            --Do you want to read the tutorial?  Y/N; ");
 
-    ChangeColor(7);
-    std::cout << "\n            --Do you want to read the tutorial?  Y/N; ";
-    std::cin >> UserResponseStr;
-    Agree = StringRespCheck(toLower(UserResponseStr), "y");
-    if(Agree)
+    std::cin >> UserResponseStr;    
+    if(RespCheck(toLower(UserResponseStr), "y"))
     {
-        //Tutorial();
+        Tutorial();
+        AcsiiArt();
     }
     
     ChangeColor(12);
@@ -29,8 +19,7 @@ bool Intro()
     ChangeColor(7);
 
     std::cin >> UserResponseStr;                                  
-    Continue = StringRespCheck(toLower(UserResponseStr), "y");
-    if(!Continue)
+    if(!RespCheck(toLower(UserResponseStr), "y"))
     {
         return 0;
     }
@@ -40,6 +29,9 @@ bool Intro()
 
 bool Lvl2()
 {
+    ClearScreen();
+    Print("You entered level ");
+
     ClearScreen();
     SlowPrint("\n+ You walk inside the dark room ", 70);
     SlowPrint(". . .\n", 100);
@@ -60,7 +52,7 @@ bool Lvl2()
     Print("\n          --Use?  Y/N; ");
 
     std::cin >> UserResponseStr;
-    Continue = StringRespCheck(toLower(UserResponseStr), "n");
+    Continue = RespCheck(toLower(UserResponseStr), "n");
     if(!Continue)
     {
         ChangeColor(12);
@@ -87,19 +79,8 @@ bool Lvl2()
 
     while (true)
     {
-        Print(" ________\n");
-        ChangeColor(11);
-        Print(" | 0-0-0 |\n");
-        ChangeColor(7);
-        Print(" |_9_8_7_|\n");
-        Print(" |_6_5_4_|\n");
-        Print(" |_3_2_1_|\n");
-        Print(" |___0___|\n\n");
-        Print("--Code: ");
-      
         std::cin >> UCodeA >> UCodeB >> UCodeC;
-        Continue = PannelCheck(UCodeA, UCodeB, UCodeC, "812");
-        if (Continue)
+        if (PannelCheck(UCodeA, UCodeB, UCodeC, "812"))
         {
             break;
         }
@@ -108,6 +89,7 @@ bool Lvl2()
         SlowPrint("--Hint: the pannel only takes 3 single digit numbers separated by space or enter\n\n", 40);
         SlowPrint("+ It says...  \"If you hide your ignorance, no one will hit you and you'll never learn...\" \n", 40);
         SlowPrint("+ Right bellow that, the numbers 8 10 2 \n\n", 40);
+        UsedPannel(false, to_string(UCodeA), to_string(UCodeB), to_string(UCodeC));
     }
         
     return 1;
@@ -115,6 +97,15 @@ bool Lvl2()
 
 bool Lvl3()
 {
+    std::cout << rand() % Level + Level << "\n";
+    std::cout << rand() % Level + Level << "\n";
+    std::cout << rand() % Level + Level << "\n";
+    std::cout << rand() % Level + Level << "\n";
+    std::cout << rand() % Level + Level << "\n";
+    //ClearScreen();
+    Print("You entered level ");
+    std::cout << Level << "\n";
+    std::cout << CodeA << CodeB << CodeC;
     SlowPrint("--There are 3 numbers in the code\n", 40);
     SlowPrint("--The numbers sum is equal to; " + SSum + "\n", 40);
     SlowPrint("--The numbers multiplied are equal to; " + SMultip + "\n", 40);
@@ -123,20 +114,82 @@ bool Lvl3()
     while (true)
     {
         std::cin >> UCodeA >> UCodeB >> UCodeC;
-        Continue = PannelCheck(UCodeA, UCodeB, UCodeC, "812");
-        if (Continue)
-        {
-            UsedPannel(true, to_string(UCodeA), to_string(UCodeB), to_string(UCodeC));
-            SlowPrint("+ Eureka!", 40);
-            Sleep(500);
-
+        if(PannelCheck(UCodeA, UCodeB, UCodeC, ""))
+        {            
             break;
         }
 
-        ClearScreen();
         SlowPrint("--Hint: the pannel only takes 3 single digit numbers separated by space or enter\n\n", 40);
+        Print("--There are 3 numbers in the code\n");
+        Print("--The numbers sum is equal to; " + SSum + "\n");
+        Print("--The numbers multiplied are equal to; " + SMultip + "\n");
+        Print("--Code: ");
+
     }
 
+    return 1;
+}
+
+bool Lvl4()
+{
+    ClearScreen();
+    Print("You entered level ");
+    std::cout << Level << "\n";
+    std::cout << CodeA << CodeB << CodeC;
+    SlowPrint("--There are 3 numbers in the code\n", 40);
+    SlowPrint("--The numbers sum is equal to; " + SSum + "\n", 40);
+    SlowPrint("--The numbers multiplied are equal to; " + SMultip + "\n", 40);
+    EmptyPannel();
+
+    while (true)
+    {
+        std::cin >> UCodeA >> UCodeB >> UCodeC;
+        if (PannelCheck(UCodeA, UCodeB, UCodeC, ""))
+        {
+            break;
+        }
+
+        
+        SlowPrint("--Hint: the pannel only takes 3 single digit numbers separated by space or enter\n\n", 40);
+        Print("--There are 3 numbers in the code\n");
+        Print("--The numbers sum is equal to; " + SSum + "\n");
+        Print("--The numbers multiplied are equal to; " + SMultip + "\n");
+        Print("--Code: ");
+        
+
+    }
+
+    return 1;
+}
+
+bool Lvl5()
+{
+    ClearScreen();
+    Print("You entered level ");
+    std::cout << Level << "\n";
+    std::cout << CodeA << CodeB << CodeC;
+    SlowPrint("--There are 3 numbers in the code\n", 40);
+    SlowPrint("--The numbers sum is equal to; " + SSum + "\n", 40);
+    SlowPrint("--The numbers multiplied are equal to; " + SMultip + "\n", 40);
+    EmptyPannel();
+
+    while (true)
+    {
+        std::cin >> UCodeA >> UCodeB >> UCodeC;
+        if (PannelCheck(UCodeA, UCodeB, UCodeC, ""))
+        {
+            break;
+        }
+
+
+        SlowPrint("--Hint: the pannel only takes 3 single digit numbers separated by space or enter\n\n", 40);
+        Print("--There are 3 numbers in the code\n");
+        Print("--The numbers sum is equal to; " + SSum + "\n");
+        Print("--The numbers multiplied are equal to; " + SMultip + "\n");
+        Print("--Code: ");
+
+
+    }
 
     return 1;
 }
