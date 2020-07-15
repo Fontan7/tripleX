@@ -82,13 +82,36 @@ void EmptyPannel()
     Print(" |_6_5_4_|\n");
     Print(" |_3_2_1_|\n");
     Print(" |___0___|\n\n");   
-    Print("--Code: ");
+    Print(" --Code: ");
 }
 
 void Tutorial()
 {
+    Print("\n\n How to answer y/n questions;\n  Just press y (for yes) or n (for no) and press enter. DO NOT type \"yes\" or \"no\".\n\n");
+    Print(" How to answer \"pannel\" questions;\n  Type in single digit numbers spaced with one space stroke or one enter in between.\n");
+    Print("  Letters are not allowed and will result in a 0 value to the pannel and a wrong answer.\n\n");
+    Print(" If you want to add your own story is easy there are just a few things to keeep in mind;\n");
+    Print("  +Remember to update the total number of levels in the variable \"MaxLevel\" located in globals.h\n");
+    Print("  +Add a new case for each new level at the function \"PlayGame\" at stories.h\n");
+    Print("  +Add your new levels at stories.h, use levels already done there as an example.\n");
+    Print("  +There are a few easy functions available straight away in stories.h; \n\n");
+    Print("    # ClearScreen()\n");
+    Print("    # Print("); ChangeColor(11); Print("string"); ChangeColor(7); Print(")\n");
+    Print("    # SlowPrint("); ChangeColor(11); Print("string, "); ChangeColor(10); Print("int"); ChangeColor(7); Print(")\n");
+    Print("    # ChangeColor("); ChangeColor(10); Print("int"); ChangeColor(7); Print(")\n");
+    Print("    # to_lower("); ChangeColor(11); Print("string"); ChangeColor(7); Print(")\n");
+    Print("    # Sleep("); ChangeColor(10); Print("int"); ChangeColor(7); Print(")\n");
+    Print("    # EmptyPannel()\n");
+    Print("    # UsedPannel("); ChangeColor(12); Print("bool, "); ChangeColor(11); Print("string, string, string"); ChangeColor(7); Print(")\n");
+    Print("    # PannelCheck("); ChangeColor(10); Print("int, int, int, "); ChangeColor(11); Print("string)"); ChangeColor(7); Print(")\n");
+    Print("    # RespCheck("); ChangeColor(11); Print("string, string"); ChangeColor(7); Print(")\n");
+    Print("    # UpdateVariables()\n");
+    Print("    # AcsiiArt()\n");
+    Print("    # Tutorial()\n");
 
-
+    SlowPrint("\n\n  Press anything and enter when DONE", 60);
+    std::cin >> UserResponseStr;
+    
     ClearScreen();
 }
 

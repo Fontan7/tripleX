@@ -15,7 +15,7 @@ int main()
 
         if (LevelComplete && Level < MaxLevel) //If the level is cleared and there are more levels to play...
         {
-            SlowPrint("\n--Well done.", 90);
+            SlowPrint("\n --Well done.", 90);
             Sleep(1500);
             ++Level;
         }
