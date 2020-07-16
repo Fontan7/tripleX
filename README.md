@@ -1,4 +1,4 @@
-# tripleX
+# TripleX
 
 Learning c++ beginner terminal game.
 
