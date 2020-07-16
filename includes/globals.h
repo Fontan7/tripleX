@@ -7,10 +7,8 @@ const int MaxLevel = 5;
 string UserResponseStr;
 string CorrectValueStr;
 
-bool Continue;
-bool Agree;
-bool Correct = false;
 bool LevelCleared;
+bool Correct = false;
 bool Tried = false;
 
 //Level 1
