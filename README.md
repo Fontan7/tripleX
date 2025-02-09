@@ -1,5 +1,6 @@
-# TripleX
+![cover](image.png)
 
+# TripleX
 Learning c++ beginner terminal game.
 
 If you want to play it; Go to main -> triplex.exe -> download -> press Run anyway on windows when prompted.
